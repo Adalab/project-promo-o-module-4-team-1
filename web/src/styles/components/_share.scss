@@ -1,0 +1,143 @@
+.containerShare {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 30px;
+}
+
+.titleShare {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  cursor: pointer;
+
+  &__title {
+    font-family: $principal-font;
+    color: $lettercolor;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  &__titleIcon {
+    display: flex;
+
+    & .fas {
+      font-size: 18px;
+      color: $iconscolor;
+      &.fa-share-alt {
+        padding-right: 10px;
+      }
+    }
+  }
+  & .fa-chevron-up,
+  & .fa-chevron-down {
+    color: $lettercolor;
+    font-size: 18px;
+  }
+}
+
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  &.collapsed {
+    display: none;
+  }
+
+  .buttonCard {
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.32);
+    font-family: $principal-font;
+
+    &--on {
+      border: $iconscolor;
+      background-color: $iconscolor;
+      cursor: pointer;
+    }
+
+    &--off {
+      border: #d5d5d5;
+      background-color: #d5d5d5;
+      margin-bottom: 30px;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      padding-left: 10px;
+      padding-right: 15px;
+    }
+    & .far {
+      font-size: 22px;
+      color: white;
+      &.fa-address-card {
+        padding-right: 15px;
+      }
+    }
+  }
+}
+.catchError {
+  font-family: $principal-font;
+  color: red;
+  margin-top: 45px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.createdCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: 1.5;
+  padding-top: 20px;
+  border-top: 1px solid #d8d8d8;
+  width: 100%;
+
+  &__title {
+    color: $lettercolor;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: $principal-font;
+    text-align: 1.5;
+    margin-bottom: 6px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $iconscolor;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: $principal-font;
+    text-align: 1.5;
+    margin-bottom: 10px;
+  }
+
+  &__buttonTwitter {
+    color: white;
+    display: flex;
+    padding: 10px;
+    border: rgb(49, 165, 233);
+    border-radius: 5px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.32);
+    background-color: rgb(49, 165, 233);
+    font-family: $principal-font;
+    font-size: 18px;
+
+    .buttonLink {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      padding-left: 10px;
+    }
+  }
+}
