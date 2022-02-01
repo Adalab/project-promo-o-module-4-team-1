@@ -1,4 +1,4 @@
-### project-promo-o-module-3-team-1
+# Copy&Paste
 
 - [Ana Jiménez](https://github.com/Okia02)
 - [Ángeles Martínez](https://github.com/AngelesMB)
