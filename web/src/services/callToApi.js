@@ -1,5 +1,5 @@
 const callToApi = (data) => {
-  return fetch('http://localhost:4000/card', {
+  return fetch('https://awesome-profile-cards.herokuapp.com/card', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
