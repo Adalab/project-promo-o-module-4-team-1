@@ -79,8 +79,9 @@ function App() {
       data.job.length === 0 ||
       data.email.length === 0 ||
       data.linkedin.length === 0 ||
-      data.github.length === 0 ||
-      data.photo.length === 0
+      data.github.length === 0 
+      // ||
+      // data.photo.length === 0
     ) {
       return true;
     }
