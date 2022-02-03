@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "./static/css/main.542af64e.css",
+    "main.js": "./static/js/main.1cdeb02d.js",
+    "static/media/defaultAvatar.png": "./static/media/defaultAvatar.8893f3ad27130ca343c1.png",
+    "static/media/cam-image.png": "./static/media/cam-image.16b309bd90251f7bdd97.png",
+    "static/media/logo-awesome-profile-cards.svg": "./static/media/logo-awesome-profile-cards.a65df2b29ae175808f920215242d8683.svg",
+    "index.html": "./index.html",
+    "main.542af64e.css.map": "./static/css/main.542af64e.css.map",
+    "main.1cdeb02d.js.map": "./static/js/main.1cdeb02d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.542af64e.css",
+    "static/js/main.1cdeb02d.js"
+  ]
+}

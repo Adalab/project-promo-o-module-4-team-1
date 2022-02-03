@@ -1,7 +1,7 @@
-import InputLabel from './InputLabel';
-import Design from './Design';
-import Fill from './Fill';
-import Share from './Share';
+import InputLabel from "./InputLabel";
+import Design from "./Design";
+import Fill from "./Fill";
+import Share from "./Share";
 
 function Form(props) {
   return (
@@ -50,6 +50,7 @@ function Form(props) {
           handleClickBtn={props.handleClickBtn}
           shareUrl={props.shareUrl}
           shareSuccess={props.shareSuccess}
+          errorMessage={props.errorMessage}
         />
       </section>
     </section>

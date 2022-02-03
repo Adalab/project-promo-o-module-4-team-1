@@ -50,6 +50,7 @@ const Share = (props) => {
       <ShareBtn
         isDisabled={props.isDisabled}
         handleClickBtn={props.handleClickBtn}
+        errorMessage={props.errorMessage}
       />
       {/*revisar botón. Input*/}
       {renderError()}
