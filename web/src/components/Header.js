@@ -5,13 +5,7 @@ function Header(props) {
   return (
     <header className={props.className}>
       <Link to="/">
-        {' '}
-        {/*revisar ruta*/}
-        <img
-          className={props.classNameImage}
-          src={logoAwesome}
-          alt="Awesome profile cards logo"
-        />
+        <img className={props.classNameImage} src={logoAwesome} alt="Logo" />
       </Link>
     </header>
   );

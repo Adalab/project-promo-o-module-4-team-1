@@ -1,7 +1,7 @@
-import InputLabel from "./InputLabel";
-import Design from "./Design";
-import Fill from "./Fill";
-import Share from "./Share";
+import InputLabel from './InputLabel';
+import Design from './Design';
+import Fill from './Fill';
+import Share from './Share';
 
 function Form(props) {
   return (
@@ -14,12 +14,14 @@ function Form(props) {
           arrow={props.designOpen}
           handleClickCollap={props.handleClickCollap}
         />
+
         <Design
           data={props.data}
-          handleInput={props.handleInput}
           designOpen={props.designOpen}
+          handleInput={props.handleInput}
         />
       </section>
+
       <section className="section__form container containerdesign">
         <InputLabel
           id="formContent"
@@ -28,13 +30,15 @@ function Form(props) {
           arrow={props.fillOpen}
           handleClickCollap={props.handleClickCollap}
         />
+
         <Fill
           data={props.data}
-          handleInput={props.handleInput}
-          updateInputPhoto={props.updateInputPhoto}
           fillOpen={props.fillOpen}
+          handleInput={props.handleInput}
+          handleInputPhoto={props.handleInputPhoto}
         />
       </section>
+
       <section className="container containerdesign">
         <InputLabel
           id="shareContent"
@@ -43,14 +47,12 @@ function Form(props) {
           arrow={props.shareOpen}
           handleClickCollap={props.handleClickCollap}
         />
+
         <Share
-          data={props.data}
-          isDisabled={props.isDisabled}
           shareOpen={props.shareOpen}
-          handleClickBtn={props.handleClickBtn}
           shareUrl={props.shareUrl}
-          shareSuccess={props.shareSuccess}
           errorMessage={props.errorMessage}
+          handleClickBtn={props.handleClickBtn}
         />
       </section>
     </section>

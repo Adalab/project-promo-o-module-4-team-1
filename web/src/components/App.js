@@ -1,49 +1,55 @@
-import "../styles/App.scss";
-import { useEffect, useState } from "react";
-import localStorage from "../services/localstorage";
-import Header from "./Header";
-import Footer from "./Footer";
-import Preview from "./preview/Preview";
-import Form from "./form/Form";
-import callToApi from "../services/callToApi";
-import { Route, Switch } from "react-router-dom";
-import Landing from "./Landing";
+import '../styles/App.scss';
+import { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import callToApi from '../services/callToApi';
+import localStorage from '../services/localstorage';
+import Header from './Header';
+import Footer from './Footer';
+import Preview from './preview/Preview';
+import Form from './form/Form';
+import Landing from './Landing';
 
 function App() {
+  // state
+
   const [data, setData] = useState(
-    localStorage.get("data", {
-      palette: "1",
-      name: "",
-      job: "",
-      photo: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
+    localStorage.get('data', {
+      palette: '1',
+      name: '',
+      job: '',
+      photo: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
     })
   );
+
   const [designOpen, setDesignOpen] = useState(true);
   const [fillOpen, setFillOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+
   const [readyToShare, setReadyToShare] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
 
-  const [shareUrl, setShareUrl] = useState("");
-  const [shareSuccess, setShareSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // local storage
 
-  console.log("shareUrl: ", shareUrl);
+  useEffect(() => {
+    localStorage.set('data', data);
+  }, [data]);
+
+  // api
 
   useEffect(() => {
     if (readyToShare) {
       callToApi(data).then((response) => {
-        console.log("response 2: ", response);
         setShareUrl(response.cardURL);
-        setShareSuccess(response.success);
         setReadyToShare(false);
-        setErrorMessage(response.error);
       });
     }
   }, [readyToShare]);
+
+  // event handlers
 
   const handleInput = (ev) => {
     const inputChanged = ev.currentTarget.name;
@@ -53,29 +59,55 @@ function App() {
     });
   };
 
-  const updateInputPhoto = (avatar) => {
+  const handleInputPhoto = (avatar) => {
     setData({ ...data, photo: avatar });
   };
 
-  useEffect(() => {
-    localStorage.set("data", data);
-  }, [data]);
+  const handleClickBtn = () => {
+    setReadyToShare(true);
+  };
+
+  const handleClickCollap = (labelName) => {
+    if (labelName === 'Diseña') {
+      setDesignOpen(!designOpen);
+      setFillOpen(false);
+      setShareOpen(false);
+    } else if (labelName === 'Rellena') {
+      setDesignOpen(false);
+      setFillOpen(!fillOpen);
+      setShareOpen(false);
+    } else if (labelName === 'Comparte') {
+      setDesignOpen(false);
+      setFillOpen(false);
+      setShareOpen(!shareOpen);
+    }
+  };
 
   const handleClickReset = () => {
     setData({
-      palette: "1",
-      name: "",
-      job: "",
-      photo: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
+      palette: '1',
+      name: '',
+      job: '',
+      photo: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
     });
-    setShareUrl("");
+    setShareUrl('');
   };
 
-  const isDisabled = () => {
+  // render helpers
+
+  const getErrorMessage = () => {
+    const regexOnlyLetters = new RegExp('^([A-ZÁÉÍÓÚa-zñáéíóú]+[s]*)+$');
+    const regexEmail = new RegExp(
+      "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+    );
+    const regexPhone = new RegExp('^[0-9]*$');
+
+    let message = '';
+
     if (
       data.name.length === 0 ||
       data.job.length === 0 ||
@@ -84,28 +116,22 @@ function App() {
       data.github.length === 0 ||
       data.photo.length === 0
     ) {
-      return true;
-    }
-  };
+      message = 'Faltan campos por rellenar';
 
-  const handleClickBtn = () => {
-    setReadyToShare(true);
-  };
-
-  const handleClickCollap = (labelName) => {
-    if (labelName === "Diseña") {
-      setDesignOpen(!designOpen);
-      setFillOpen(false);
-      setShareOpen(false);
-    } else if (labelName === "Rellena") {
-      setDesignOpen(false);
-      setFillOpen(!fillOpen);
-      setShareOpen(false);
-    } else if (labelName === "Comparte") {
-      setDesignOpen(false);
-      setFillOpen(false);
-      setShareOpen(!shareOpen);
+      if (data.name.length <= 2) {
+        message = 'El nombre es demasiado corto';
+      } else if (!regexOnlyLetters.test(data.name)) {
+        message = 'El nombre sólo puede contener letras';
+      } else if (data.job.length <= 2) {
+        message = 'La descripción del puesto es demasiado corta';
+      } else if (!regexEmail.test(data.email)) {
+        message = 'El formato del email no es válido';
+      } else if (!regexPhone.test(data.phone) && data.phone.length !== 0) {
+        message = 'El formato del teléfono no es válido';
+      }
     }
+
+    return message;
   };
 
   return (
@@ -114,27 +140,29 @@ function App() {
         <Route exact path="/">
           <Landing />
         </Route>
+
         <Route exact path="/CardGenerate">
           <Header className="headerCard" classNameImage="imgCard" />
+
           <main className="create_card_main">
             <Preview data={data} handleClickReset={handleClickReset} />
+
             <Form
               data={data}
-              handleInput={handleInput}
-              handleClickBtn={handleClickBtn}
-              updateInputPhoto={updateInputPhoto}
-              handleClickCollap={handleClickCollap}
               designOpen={designOpen}
               fillOpen={fillOpen}
               shareOpen={shareOpen}
-              isDisabled={isDisabled}
               shareUrl={shareUrl}
-              shareSuccess={shareSuccess}
-              errorMessage={errorMessage}
+              errorMessage={getErrorMessage()}
+              handleInput={handleInput}
+              handleInputPhoto={handleInputPhoto}
+              handleClickBtn={handleClickBtn}
+              handleClickCollap={handleClickCollap}
             />
           </main>
         </Route>
       </Switch>
+
       <Footer />
     </div>
   );

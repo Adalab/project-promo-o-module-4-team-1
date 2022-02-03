@@ -1,42 +1,47 @@
-import GetAvatar from "../avatar/GetAvatar";
+import GetAvatar from '../avatar/GetAvatar';
 
 const Fill = (props) => {
   return (
-    <form action="" method="post" className="form js-form">
-      <div className={`js-sectionFill js_content ${props.fillOpen ? '' : 'collapsed'}`} id="formContent">
+    <form className="form js-form">
+      <div
+        className={`js-sectionFill js_content ${
+          props.fillOpen ? '' : 'collapsed'
+        }`}
+        id="formContent"
+      >
         <fieldset>
-          <label htmlFor="name" className="form__label">
+          <label className="form__label" htmlFor="name">
             Nombre completo
           </label>
+
           <input
+            className="form__input js-full_name"
             type="text"
-            placeholder="Ej: Sally Jill"
             name="name"
             id="name"
-            className="form__input js-full_name"
+            placeholder="Ej: Sally Jill"
             value={props.data.name}
             onChange={props.handleInput}
-            required
-            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
-          />
-          <label htmlFor="job" className="form__label">
-            Puesto
-          </label>
-          <input
-            type="text"
-            placeholder="Ej: Front-end unicorn"
-            name="job"
-            id="job"
-            className="form__input js-job"
-            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
-            value={props.data.job}
-            onChange={props.handleInput}
-            required
           />
 
-          <label htmlFor="image" className="form__label">
+          <label className="form__label" htmlFor="job">
+            Puesto
+          </label>
+
+          <input
+            className="form__input js-job"
+            type="text"
+            name="job"
+            id="job"
+            placeholder="Ej: Front-end unicorn"
+            value={props.data.job}
+            onChange={props.handleInput}
+          />
+
+          <label className="form__label" htmlFor="image">
             Imagen de perfil
           </label>
+
           <div className="form__image-section">
             <label
               className="form__image-section--add js__profile-trigger"
@@ -46,62 +51,64 @@ const Fill = (props) => {
             </label>
 
             <GetAvatar
-              updateInputPhoto={props.updateInputPhoto}
               avatar={props.data.photo}
+              handleInputPhoto={props.handleInputPhoto}
             />
           </div>
 
-          <label htmlFor="email" className="form__label">
+          <label className="form__label" htmlFor="email">
             Email
           </label>
+
           <input
+            className="form__input js-email"
             type="email"
-            placeholder="Ej: sally-hill@gmail.com "
             name="email"
             id="email"
-            className="form__input js-email"
+            placeholder="Ej: sally-hill@gmail.com"
             value={props.data.email}
             onChange={props.handleInput}
-            required
           />
 
-          <label htmlFor="phone" className="form__label">
+          <label className="form__label" htmlFor="phone">
             Teléfono
           </label>
+
           <input
+            className="form__input js-phone"
             type="tel"
-            placeholder="Ej: 555-55-55-55"
             pattern=""
             name="phone"
             id="phone"
-            className="form__input js-phone"
+            placeholder="Ej: 555-55-55-55"
             value={props.data.phone}
             onChange={props.handleInput}
-            /*pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" */
           />
 
-          <label htmlFor="linkedin" className="form__label">
+          <label className="form__label" htmlFor="linkedin">
             Linkedin
           </label>
+
           <input
+            className="form__input js-linkedin"
             type="text"
-            placeholder="Ej: linkedin.com/in/sally.hill"
             name="linkedin"
             id="linkedin"
-            className="form__input js-linkedin"
+            placeholder="Ej: linkedin.com/in/sally.hill"
             value={props.data.linkedin}
             onChange={props.handleInput}
-            required
           />
-          <label htmlFor="github" className="form__label">
+
+          <label className="form__label" htmlFor="github">
             Github
           </label>
+
           <input
+            className="form__input js-github"
             type="text"
-            placeholder="Ej: @sally-hill"
             name="github"
             id="github"
-            className="form__input js-github"
+            placeholder="Ej: @sally-hill"
             value={props.data.github}
             onChange={props.handleInput}
           />
@@ -110,4 +117,5 @@ const Fill = (props) => {
     </form>
   );
 };
+
 export default Fill;

@@ -12,7 +12,7 @@
   @include tablet {
     padding-top: 7px;
   }
-  
+
   & section.collapsed {
     display: none;
   }
@@ -54,7 +54,6 @@
     justify-content: space-between;
     width: 100%;
 
-
     & .colourstitle {
       font-size: 14px;
       padding-left: 19px;
@@ -84,6 +83,7 @@
         .colours2,
         .colours3 {
           display: flex;
+          cursor: pointer;
 
           .palette1 {
             width: 30px;
@@ -141,4 +141,8 @@
       }
     }
   }
+}
+
+.colourpalette {
+  cursor: pointer;
 }
