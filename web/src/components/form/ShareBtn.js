@@ -2,9 +2,9 @@ const ShareBtn = (props) => {
   return (
     <button
       className={`buttonCard js-buttonCard buttonCard--${
-        props.errorMessage !== '' ? 'off' : 'on'
+        props.errorMessage() !== '' ? 'off' : 'on'
       }`}
-      disabled={props.errorMessage !== '' ? true : false}
+      disabled={props.errorMessage() !== '' ? true : false}
       onClick={props.handleClickBtn}
     >
       <i className="far fa-address-card"></i>

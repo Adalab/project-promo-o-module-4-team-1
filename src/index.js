@@ -9,6 +9,7 @@ const server = express();
 // Configuramos el servidor
 server.use(cors());
 server.use(express.json({ limit: '10mb' }));
+server.set('view engine', 'ejs');
 
 // Arrancamos el servidor en el puerto 4000
 const serverPort = 4000;
@@ -16,9 +17,11 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
+let data = {};
+
 // Escribimos los endpoints que queramos
 server.post('/card', (req, res) => {
-  const data = req.body;
+  data = req.body;
   const response = {};
 
   if (
@@ -40,15 +43,12 @@ server.post('/card', (req, res) => {
 });
 
 server.get('/card/cardId', (req, res) => {
-  res.send(
-    `<html>
-      <body>
-        <h1>Hola</h1>
-      </body>
-    </html>`
-  );
+  res.render('card', data);
 });
 
-// Servidores estáticos
+// Servidor de estáticos
 const staticServerPath = './src/public-react';
 server.use(express.static(staticServerPath));
+
+const staticServerPathCSS = './src/public-react-css';
+server.use(express.static(staticServerPathCSS));

@@ -118,7 +118,7 @@ function App() {
     ) {
       message = 'Faltan campos por rellenar';
 
-      if (data.name.length <= 2) {
+      if (data.name.length > 0 && data.name.length <= 1) {
         message = 'El nombre es demasiado corto';
       } else if (!regexOnlyLetters.test(data.name)) {
         message = 'El nombre sólo puede contener letras';
@@ -153,7 +153,7 @@ function App() {
               fillOpen={fillOpen}
               shareOpen={shareOpen}
               shareUrl={shareUrl}
-              errorMessage={getErrorMessage()}
+              errorMessage={getErrorMessage}
               handleInput={handleInput}
               handleInputPhoto={handleInputPhoto}
               handleClickBtn={handleClickBtn}

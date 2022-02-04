@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tu tarjeta de visita</title>
+    <link href="/main.9bd713e9.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/80c9b8179a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer="defer" src="./static/js/main.eb0065fb.js"></script>
+  </head>
+  <body>
+    <div class="card-preview">
+      <div
+        class="`card-preview__header"
+        js-card-preview-header
+        card-preview__header${changePalette()}`}
+      >
+        <h3
+          class="{`card-preview__title"
+          card-preview__title${changePalette()}
+          js-preview_name`}
+        >
+          <%= name %>
+        </h3>
+        <p class="card-preview__subtitle js-preview_job"><%= job %></p>
+      </div>
+
+      <img
+        class="card-preview__photo js__profile-image"
+        src="<%= photo %>"
+        width="50"
+      />
+
+      <nav class="card-preview__nav">
+        <ul class="card__socialmedia">
+          <li
+            class="{`card__socialmedia--item"
+            card__socialmedia--item${props.changePalette}`}
+          >
+            <a
+              href="tel:<%= phone %>"
+              alt="{props.alt}"
+              target="{blank}"
+              rel="{rel}"
+            >
+              <i class="fas fa-mobile-alt"></i>
+            </a>
+          </li>
+
+          <li
+            class="{`card__socialmedia--item"
+            card__socialmedia--item${props.changePalette}`}
+          >
+            <a
+              href="mailto:<%= email %>"
+              alt="{props.alt}"
+              target="{blank}"
+              rel="{rel}"
+            >
+              <i class="far fa-envelope"></i>
+            </a>
+          </li>
+
+          <li
+            class="{`card__socialmedia--item"
+            card__socialmedia--item${props.changePalette}`}
+          >
+            <a
+              href="http://www.linkedin.com/in/<%= linkedin %>"
+              alt="{props.alt}"
+              target="{blank}"
+              rel="{rel}"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+
+          <li
+            class="{`card__socialmedia--item"
+            card__socialmedia--item${props.changePalette}`}
+          >
+            <a
+              href="http://www.github.com/<%= github %>"
+              alt="{props.alt}"
+              target="{blank}"
+              rel="{rel}"
+            >
+              <i class="fab fa-github-alt"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

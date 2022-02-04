@@ -2,7 +2,7 @@ import ShareBtn from './ShareBtn';
 
 const Share = (props) => {
   const renderShareUrl = () => {
-    if (props.errorMessage === '' && props.shareUrl !== '') {
+    if (props.errorMessage() === '' && props.shareUrl !== '') {
       return (
         <div className="createdCard js-createdCard collapsed">
           <h5 className="createdCard__title">La tarjeta ha sido creada:</h5>
@@ -35,8 +35,8 @@ const Share = (props) => {
   };
 
   const renderError = () => {
-    if (props.errorMessage !== '') {
-      return <p className="catchError js_catchError">{props.errorMessage}</p>;
+    if (props.errorMessage() !== '') {
+      return <p className="catchError js_catchError">{props.errorMessage()}</p>;
     }
   };
 
