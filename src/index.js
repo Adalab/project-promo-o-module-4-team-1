@@ -9,18 +9,13 @@ const server = express();
 
 // Configuramos el servidor
 server.use(cors());
-server.use(
-  express.json({ limit: "10mb" })
-);
+server.use(express.json({ limit: "10mb" }));
 server.set("view engine", "ejs");
 
 // Arrancamos el servidor en el puerto 4000
-const serverPort =
-  process.env.PORT || 4000;
+const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
-  console.log(
-    `Server listening at http://localhost:${serverPort}`
-  );
+  console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
 let data = {};
@@ -45,8 +40,7 @@ server.post("/card", (req, res) => {
     data.github === ""
   ) {
     response.success = false;
-    response.error =
-      "¡Oh! Parece que se ha producido un error";
+    response.error = "¡Oh! Parece que se ha producido un error";
   } else {
     response.success = true;
     response.cardURL = `http://localhost:4000/card/${data.id}`;
@@ -55,30 +49,28 @@ server.post("/card", (req, res) => {
   res.json(response);
 });
 
-server.get(
-  "/card/:cardId",
-  (req, res) => {
-    const foundId = savedCards.find(
-      (card) =>
-        card.id === req.params.cardId
-    );
-    if (foundId !== undefined) {
-      res.render("card", data);
-    } else {
-      res.render("not-found");
-    }
+server.get("/card/:cardId", (req, res) => {
+  const foundId = savedCards.find((card) => card.id === req.params.cardId);
+  if (foundId !== undefined) {
+    res.render("card", data);
+  } else {
+    res.render("not-found");
   }
-);
+});
 
 // Servidor de estáticos
-const staticServerPath =
-  "./src/public-react";
-server.use(
-  express.static(staticServerPath)
-);
+const staticServerPath = "./src/public-react";
+server.use(express.static(staticServerPath));
 
-const staticServerPathCSS =
-  "./src/public-react-css";
-server.use(
-  express.static(staticServerPathCSS)
-);
+const staticServerPathCSS = "./src/public-react-css";
+server.use(express.static(staticServerPathCSS));
+
+// not found error
+server.get("*", (req, res) => {
+  const notFoundFileRelativePath = "../src/public-react/404-not-found.html";
+  const notFoundFileAbsolutePath = path.join(
+    __dirname,
+    notFoundFileRelativePath
+  );
+  res.status(404).sendFile(notFoundFileAbsolutePath);
+});
