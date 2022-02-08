@@ -4,11 +4,11 @@ const Share = (props) => {
   const renderShareUrl = () => {
     if (props.errorMessage() === '' && props.shareUrl !== '') {
       return (
-        <div className="createdCard js-createdCard collapsed">
+        <div className="createdCard collapsed">
           <h5 className="createdCard__title">La tarjeta ha sido creada:</h5>
 
           <a
-            className="createdCard__link js_createdCard__link"
+            className="createdCard__link"
             href={props.shareUrl}
             target="_blank"
             rel="noreferrer"
@@ -20,7 +20,7 @@ const Share = (props) => {
           <button className="createdCard__buttonTwitter">
             <i className="fab fa-twitter"></i>
             <a
-              className="buttonLink js-buttonLink"
+              className="buttonLink"
               href={`https://twitter.com/intent/tweet?text=%C2%A1Comparte%20esta%20tarjeta%20super%20molona%21&url=${props.shareUrl}`}
               target="_blank"
               rel="noreferrer"
@@ -34,17 +34,9 @@ const Share = (props) => {
     }
   };
 
-  const renderError = () => {
-    if (props.errorMessage() !== '') {
-      return <p className="catchError js_catchError">{props.errorMessage()}</p>;
-    }
-  };
-
   return (
     <div
-      className={`containerButton js-sectionShare js_content ${
-        props.shareOpen ? '' : 'collapsed'
-      }`}
+      className={`containerButton ${props.shareOpen ? '' : 'collapsed'}`}
       id="shareContent"
     >
       <ShareBtn
@@ -52,7 +44,6 @@ const Share = (props) => {
         handleClickBtn={props.handleClickBtn}
       />
 
-      {renderError()}
       {renderShareUrl()}
     </div>
   );

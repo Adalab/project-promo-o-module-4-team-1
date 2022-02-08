@@ -2,27 +2,28 @@
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  padding-right: 28px;
-  padding-left: 28px;
+  padding: 0 30px;
   width: 100%;
-  //height: 50vh;
-  padding-bottom: 30%;
-  @media (min-width: 768px) {
-    justify-content: flex-end;
-    padding-bottom: 0;
+  min-height: calc(50vh - 49px);
+
+  @include tablet {
+    min-height: calc(50vh - 32px);
   }
+
   &__title {
     line-height: normal;
     text-align: center;
-    font-family: "Merriweather", serif;
+    font-family: 'Merriweather', serif;
     color: #e17334;
     font-size: 19.2px;
-    @media (min-width: 768px) {
+
+    @include tablet {
       font-size: 24px;
     }
   }
+
   &__text {
     font-family: $principal-font;
     font-size: 12.8px;
@@ -30,12 +31,13 @@
     line-height: normal;
     margin-bottom: 18px;
     text-align: center;
-    @media (min-width: 768px) {
+
+    @include tablet {
       font-size: 16px;
-      margin-right: 200px;
-      margin-left: 200px;
+      width: 350px;
     }
   }
+
   &__nav {
     .list {
       padding: 0px;
@@ -47,14 +49,17 @@
       width: 268px;
       margin-bottom: 38.6px;
       border-radius: 4px;
-      @media (min-width: 768px) {
+
+      @include tablet {
         margin-bottom: 20%;
         height: 86px;
         width: 325px;
       }
-      @media (min-width: 1200px) {
+
+      @include desktop {
         margin-bottom: 100px;
       }
+
       &__item {
         display: flex;
         flex-direction: column;
@@ -63,9 +68,11 @@
         line-height: normal;
         color: #54585a;
         font-size: 14px;
-        @media (min-width: 768px) {
+
+        @include tablet {
           font-size: 16px;
         }
+
         &--icon {
           color: #e17334;
           font-size: 22.4px;
@@ -75,18 +82,20 @@
       }
     }
   }
+
   &__btn {
     border-radius: 21px;
     background-color: #438792;
     line-height: 1, 5;
     padding: 10px 20px;
-
     text-transform: uppercase;
     font-family: $principal-font;
     margin-bottom: 30px;
-    @media (min-width: 768px) {
+
+    @include tablet {
       margin-bottom: 69px;
     }
+
     &--link {
       text-decoration: none;
       color: white;

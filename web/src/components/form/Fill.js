@@ -1,120 +1,118 @@
 import GetAvatar from '../avatar/GetAvatar';
 
 const Fill = (props) => {
+  const renderErrorMessage = () => {
+    if (props.errorMessage() !== '') {
+      return <p className="catchError">{props.errorMessage()}</p>;
+    }
+  };
+
   return (
-    <form className="form js-form">
-      <div
-        className={`js-sectionFill js_content ${
-          props.fillOpen ? '' : 'collapsed'
-        }`}
-        id="formContent"
-      >
-        <fieldset>
-          <label className="form__label" htmlFor="name">
-            Nombre completo
+    <div className={`${props.fillOpen ? '' : 'collapsed'}`}>
+      <form className="form">
+        <label className="form__label" htmlFor="name">
+          Nombre completo <span className="catchError">*</span>
+        </label>
+
+        <input
+          className="form__input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Ej: Sally Jill"
+          value={props.data.name}
+          onChange={props.handleInput}
+        />
+
+        <label className="form__label" htmlFor="job">
+          Puesto <span className="catchError">*</span>
+        </label>
+
+        <input
+          className="form__input"
+          type="text"
+          name="job"
+          id="job"
+          placeholder="Ej: Front-end unicorn"
+          value={props.data.job}
+          onChange={props.handleInput}
+        />
+
+        <label className="form__label" htmlFor="image">
+          Imagen de perfil <span className="catchError">*</span>
+        </label>
+
+        <div className="form__image-section">
+          <label className="form__image-section--add" htmlFor="file">
+            Añadir imagen
           </label>
 
-          <input
-            className="form__input js-full_name"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Ej: Sally Jill"
-            value={props.data.name}
-            onChange={props.handleInput}
+          <GetAvatar
+            avatar={props.data.photo}
+            handleInputPhoto={props.handleInputPhoto}
           />
+        </div>
 
-          <label className="form__label" htmlFor="job">
-            Puesto
-          </label>
+        <label className="form__label" htmlFor="email">
+          Email <span className="catchError">*</span>
+        </label>
 
-          <input
-            className="form__input js-job"
-            type="text"
-            name="job"
-            id="job"
-            placeholder="Ej: Front-end unicorn"
-            value={props.data.job}
-            onChange={props.handleInput}
-          />
+        <input
+          className="form__input"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Ej: sally-hill@gmail.com"
+          value={props.data.email}
+          onChange={props.handleInput}
+        />
 
-          <label className="form__label" htmlFor="image">
-            Imagen de perfil
-          </label>
+        <label className="form__label" htmlFor="phone">
+          Teléfono
+        </label>
 
-          <div className="form__image-section">
-            <label
-              className="form__image-section--add js__profile-trigger"
-              htmlFor="file"
-            >
-              Añadir imagen
-            </label>
+        <input
+          className="form__input"
+          type="tel"
+          pattern=""
+          name="phone"
+          id="phone"
+          placeholder="Ej: 555-55-55-55"
+          value={props.data.phone}
+          onChange={props.handleInput}
+        />
 
-            <GetAvatar
-              avatar={props.data.photo}
-              handleInputPhoto={props.handleInputPhoto}
-            />
-          </div>
+        <label className="form__label" htmlFor="linkedin">
+          Linkedin <span className="catchError">*</span>
+        </label>
 
-          <label className="form__label" htmlFor="email">
-            Email
-          </label>
+        <input
+          className="form__input"
+          type="text"
+          name="linkedin"
+          id="linkedin"
+          placeholder="Ej: linkedin.com/in/sally.hill"
+          value={props.data.linkedin}
+          onChange={props.handleInput}
+        />
 
-          <input
-            className="form__input js-email"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Ej: sally-hill@gmail.com"
-            value={props.data.email}
-            onChange={props.handleInput}
-          />
+        <label className="form__label" htmlFor="github">
+          Github <span className="catchError">*</span>
+        </label>
 
-          <label className="form__label" htmlFor="phone">
-            Teléfono
-          </label>
+        <input
+          className="form__input"
+          type="text"
+          name="github"
+          id="github"
+          placeholder="Ej: @sally-hill"
+          value={props.data.github}
+          onChange={props.handleInput}
+        />
+      </form>
 
-          <input
-            className="form__input js-phone"
-            type="tel"
-            pattern=""
-            name="phone"
-            id="phone"
-            placeholder="Ej: 555-55-55-55"
-            value={props.data.phone}
-            onChange={props.handleInput}
-          />
-
-          <label className="form__label" htmlFor="linkedin">
-            Linkedin
-          </label>
-
-          <input
-            className="form__input js-linkedin"
-            type="text"
-            name="linkedin"
-            id="linkedin"
-            placeholder="Ej: linkedin.com/in/sally.hill"
-            value={props.data.linkedin}
-            onChange={props.handleInput}
-          />
-
-          <label className="form__label" htmlFor="github">
-            Github
-          </label>
-
-          <input
-            className="form__input js-github"
-            type="text"
-            name="github"
-            id="github"
-            placeholder="Ej: @sally-hill"
-            value={props.data.github}
-            onChange={props.handleInput}
-          />
-        </fieldset>
-      </div>
-    </form>
+      {renderErrorMessage()}
+    </div>
   );
 };
 

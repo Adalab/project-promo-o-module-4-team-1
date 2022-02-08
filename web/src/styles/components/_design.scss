@@ -5,13 +5,9 @@
   color: $lettercolor;
   text-transform: uppercase;
   font-family: $principal-font;
-  padding: 27px 0 7px;
+  padding: 10px 0 10px;
   border-bottom: 1px solid #d8d8d8;
   padding-bottom: -20px;
-
-  @include tablet {
-    padding-top: 7px;
-  }
 
   & section.collapsed {
     display: none;
@@ -22,6 +18,8 @@
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     & .icontitle {
       display: flex;
@@ -40,7 +38,6 @@
     & .designtitle {
       font-size: 18px;
       font-weight: 600;
-      padding-bottom: 22px;
     }
 
     & .fa-chevron-up,
@@ -53,6 +50,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
 
     & .colourstitle {
       font-size: 14px;
@@ -79,6 +78,7 @@
       .palettescolours {
         display: flex;
         flex-direction: column;
+
         .colours1,
         .colours2,
         .colours3 {

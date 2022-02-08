@@ -3,9 +3,7 @@ import Palettes from './Palettes';
 const Design = (props) => {
   return (
     <section
-      className={`paletteandcolours js-sectionDesign js_content ${
-        props.designOpen ? '' : 'collapsed'
-      }`}
+      className={`paletteandcolours ${props.designOpen ? '' : 'collapsed'}`}
       id="designContent"
     >
       <p className="colourstitle">Colores</p>

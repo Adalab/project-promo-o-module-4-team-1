@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 function Header(props) {
   return (
     <header className={props.className}>
-      <Link to="/">
-        <img className={props.classNameImage} src={logoAwesome} alt="Logo" />
-      </Link>
+      <div className={`${props.className}__wrapper`}>
+        <Link to="/">
+          <img
+            className={props.classNameImage}
+            src={logoAwesome}
+            alt="Logo"
+            title="Inicio"
+          />
+        </Link>
+      </div>
     </header>
   );
 }

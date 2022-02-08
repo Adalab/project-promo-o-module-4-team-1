@@ -1,9 +1,3 @@
-.containerShare {
-  padding-bottom: 30px;
-  border-bottom: 1px solid #d8d8d8;
-  margin-bottom: 30px;
-}
-
 .titleShare {
   display: flex;
   justify-content: space-between;
@@ -24,11 +18,13 @@
     & .fas {
       font-size: 18px;
       color: $iconscolor;
+
       &.fa-share-alt {
         padding-right: 10px;
       }
     }
   }
+
   & .fa-chevron-up,
   & .fa-chevron-down {
     color: $lettercolor;
@@ -64,7 +60,6 @@
     &--off {
       border: #d5d5d5;
       background-color: #d5d5d5;
-      margin-bottom: 30px;
     }
 
     &__title {
@@ -75,22 +70,25 @@
       padding-left: 10px;
       padding-right: 15px;
     }
+
     & .far {
       font-size: 22px;
       color: white;
+
       &.fa-address-card {
         padding-right: 15px;
       }
     }
   }
 }
+
 .catchError {
   font-family: $principal-font;
+  font-size: 14px;
   color: red;
-  margin-top: 45px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  text-transform: none;
 }
 
 .createdCard {
@@ -99,9 +97,9 @@
   justify-content: center;
   align-items: center;
   text-align: 1.5;
-  padding-top: 20px;
+  padding-top: 25px;
   border-top: 1px solid #d8d8d8;
-  width: 100%;
+  margin-top: 30px;
 
   &__title {
     color: $lettercolor;
@@ -116,10 +114,16 @@
     text-decoration: none;
     color: $iconscolor;
     font-size: 12px;
+    line-height: normal;
     font-weight: 600;
     font-family: $principal-font;
     text-align: 1.5;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
   }
 
   &__buttonTwitter {

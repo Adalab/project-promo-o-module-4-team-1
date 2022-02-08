@@ -3,6 +3,7 @@
     @content;
   }
 }
+
 @mixin desktop {
   @media (min-width: $breakpoint-desktop) {
     @content;

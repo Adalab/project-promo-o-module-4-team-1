@@ -108,7 +108,17 @@ function App() {
 
     let message = '';
 
-    if (
+    if (data.name.length > 0 && data.name.length <= 1) {
+      message = '* El nombre es demasiado corto.';
+    } else if (data.name.length > 0 && !regexOnlyLetters.test(data.name)) {
+      message = '* El nombre sólo puede contener letras sin espacios.';
+    } else if (data.job.length > 0 && data.job.length <= 2) {
+      message = '* La descripción del puesto es demasiado corta.';
+    } else if (data.email.length > 0 && !regexEmail.test(data.email)) {
+      message = '* El formato del email no es válido.';
+    } else if (data.phone.length > 0 && !regexPhone.test(data.phone)) {
+      message = '* El formato del teléfono no es válido.';
+    } else if (
       data.name.length === 0 ||
       data.job.length === 0 ||
       data.email.length === 0 ||
@@ -116,19 +126,7 @@ function App() {
       data.github.length === 0 ||
       data.photo.length === 0
     ) {
-      message = 'Faltan campos por rellenar';
-
-      if (data.name.length > 0 && data.name.length <= 1) {
-        message = 'El nombre es demasiado corto';
-      } else if (!regexOnlyLetters.test(data.name)) {
-        message = 'El nombre sólo puede contener letras';
-      } else if (data.job.length <= 2) {
-        message = 'La descripción del puesto es demasiado corta';
-      } else if (!regexEmail.test(data.email)) {
-        message = 'El formato del email no es válido';
-      } else if (!regexPhone.test(data.phone) && data.phone.length !== 0) {
-        message = 'El formato del teléfono no es válido';
-      }
+      message = '* Los campos marcados con asterisco son obligatorios.';
     }
 
     return message;
@@ -145,20 +143,22 @@ function App() {
           <Header className="headerCard" classNameImage="imgCard" />
 
           <main className="create_card_main">
-            <Preview data={data} handleClickReset={handleClickReset} />
+            <div className="create_card_main__wrapper">
+              <Preview data={data} handleClickReset={handleClickReset} />
 
-            <Form
-              data={data}
-              designOpen={designOpen}
-              fillOpen={fillOpen}
-              shareOpen={shareOpen}
-              shareUrl={shareUrl}
-              errorMessage={getErrorMessage}
-              handleInput={handleInput}
-              handleInputPhoto={handleInputPhoto}
-              handleClickBtn={handleClickBtn}
-              handleClickCollap={handleClickCollap}
-            />
+              <Form
+                data={data}
+                designOpen={designOpen}
+                fillOpen={fillOpen}
+                shareOpen={shareOpen}
+                shareUrl={shareUrl}
+                errorMessage={getErrorMessage}
+                handleInput={handleInput}
+                handleInputPhoto={handleInputPhoto}
+                handleClickBtn={handleClickBtn}
+                handleClickCollap={handleClickCollap}
+              />
+            </div>
           </main>
         </Route>
       </Switch>

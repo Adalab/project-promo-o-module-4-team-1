@@ -34,6 +34,7 @@ function Form(props) {
         <Fill
           data={props.data}
           fillOpen={props.fillOpen}
+          errorMessage={props.errorMessage}
           handleInput={props.handleInput}
           handleInputPhoto={props.handleInputPhoto}
         />

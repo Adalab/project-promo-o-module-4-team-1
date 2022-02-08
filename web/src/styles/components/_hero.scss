@@ -6,14 +6,8 @@
   text-align: center;
   padding-bottom: 18%;
 
-  // @include tablet {
-  // }
-  // @include desktop {
-  //   // margin-bottom: 50px;
-  // }
-
   &__section--title {
-    font-family: "Merriweather", serif;
+    font-family: 'Merriweather', serif;
     font-size: 19.2px;
     color: #e17334;
     font-weight: bold;
@@ -24,12 +18,14 @@
       padding-top: 31px;
     }
   }
+
   &__section--text {
     font-family: $principal-font;
     font-size: 12.8px;
     color: #114e4e;
     line-height: normal;
     margin: 0 28px 17.8px 28px;
+
     @include tablet {
       font-size: 16px;
       margin: 0 218px 27px 218px;
@@ -44,6 +40,7 @@
   margin-left: 25.6px;
   margin-right: 26.4px;
   margin-bottom: 38.6px;
+
   @include tablet {
     width: 325px;
     height: 86px;
@@ -51,6 +48,7 @@
     margin-right: 221px;
     margin-bottom: 186px;
   }
+
   @include desktop {
     margin-bottom: 40px;
   }
@@ -64,6 +62,7 @@
     font-family: $principal-font;
     font-size: 12.8px;
     color: #54585a;
+
     @include tablet {
       width: 325px;
       height: 86px;
@@ -71,6 +70,7 @@
     }
   }
 }
+
 .list-desing {
   display: flex;
   flex-direction: column;
@@ -92,6 +92,7 @@
   border-radius: 21px;
   margin-bottom: 30px;
 }
+
 .button_start {
   text-transform: uppercase;
   text-decoration: none;
