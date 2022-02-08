@@ -10,7 +10,7 @@
 
 En este proyecto vamos a desarrollar nuestro primer servidor web.
 
-👉🏼 **[project-promo-o-module4-team1.herokuapp.com](https://project-promo-o-module4-team1.herokuapp.com)**
+👉 **[project-promo-o-module4-team1.herokuapp.com](https://project-promo-o-module4-team1.herokuapp.com)**
 
 ## Objetivos
 
