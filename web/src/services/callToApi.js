@@ -1,6 +1,6 @@
 const serverUrl =
   process.env.NODE_ENV === "production"
-    ? "https://project-promo-o-module4-team1.herokuapp.com/"
+    ? "https://project-promo-o-module4-team1.herokuapp.com"
     : "http://localhost:4000";
 
 const callToApi = (data) => {
