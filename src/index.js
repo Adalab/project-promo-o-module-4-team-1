@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
+const Database = require("better-sqlite3");
+const db = new Database("./src/db/database.db", { verbose: console.log });
 
 // Creamos el servidor
 const server = express();
@@ -18,17 +20,15 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-let data = {};
-let savedCards = [];
-
 // Escribimos los endpoints que queramos
 server.post("/card", (req, res) => {
+  let data = {};
   data = {
     ...req.body,
     id: uuidv4(),
   };
   console.log(data.id);
-  savedCards.push(data);
+
   const response = {};
 
   if (
@@ -42,6 +42,21 @@ server.post("/card", (req, res) => {
     response.success = false;
     response.error = "¡Oh! Parece que se ha producido un error";
   } else {
+    const query = db.prepare(
+      `INSERT INTO cards (uuid, palette, name, job, phone, email, linkedin, github, photo) VALUES (?,?,?,?,?,?,?,?,?)`
+    );
+    const result = query.run(
+      data.id,
+      data.palette,
+      data.name,
+      data.job,
+      data.phone,
+      data.email,
+      data.linkedin,
+      data.github,
+      data.photo
+    );
+
     response.success = true;
     response.cardURL = `http://localhost:4000/card/${data.id}`;
   }
@@ -50,9 +65,11 @@ server.post("/card", (req, res) => {
 });
 
 server.get("/card/:cardId", (req, res) => {
-  const foundId = savedCards.find((card) => card.id === req.params.cardId);
+  const query = db.prepare(`SELECT * FROM cards WHERE uuid = ?`);
+  const foundId = query.get(req.params.cardId);
+
   if (foundId !== undefined) {
-    res.render("card", data);
+    res.render("card", foundId);
   } else {
     res.render("not-found");
   }
