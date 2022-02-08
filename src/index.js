@@ -58,7 +58,7 @@ server.post("/card", (req, res) => {
     );
 
     response.success = true;
-    response.cardURL = `http://localhost:4000/card/${data.id}`;
+    response.cardURL = `https://project-promo-o-module4-team1.herokuapp.com/card/${data.id}`;
   }
 
   res.json(response);
