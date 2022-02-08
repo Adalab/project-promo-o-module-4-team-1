@@ -6,7 +6,7 @@
 - [María Rodríguez](https://github.com/mariarguezp)
 - [Victoria Blanc](https://github.com/vicblanc92)
 
-# Awesome profile cards 3.0
+# Awesome profile-cards 3.0
 
 En este proyecto vamos a desarrollar nuestro primer servidor web.
 
