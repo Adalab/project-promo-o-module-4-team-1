@@ -27,7 +27,6 @@ server.post("/card", (req, res) => {
     ...req.body,
     id: uuidv4(),
   };
-  console.log(data.id);
 
   const response = {};
 
@@ -58,7 +57,10 @@ server.post("/card", (req, res) => {
     );
 
     response.success = true;
-    response.cardURL = `https://project-promo-o-module4-team1.herokuapp.com/card/${data.id}`;
+    response.cardURL =
+      process.env.NODE_ENV === "production"
+        ? `https://project-promo-o-module4-team1.herokuapp.com/card/${data.id}`
+        : `http://localhost:4000/card/${data.id}`;
   }
 
   res.json(response);

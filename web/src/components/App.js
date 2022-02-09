@@ -100,7 +100,7 @@ function App() {
   // render helpers
 
   const getErrorMessage = () => {
-    const regexOnlyLetters = new RegExp('^([A-ZÁÉÍÓÚa-zñáéíóú]+[s]*)+$');
+    const regexOnlyLetters = new RegExp('^([A-ZÁÉÍÓÚa-zñáéíóú ]+[s]*)+$');
     const regexEmail = new RegExp(
       "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
     );
@@ -111,7 +111,7 @@ function App() {
     if (data.name.length > 0 && data.name.length <= 1) {
       message = '* El nombre es demasiado corto.';
     } else if (data.name.length > 0 && !regexOnlyLetters.test(data.name)) {
-      message = '* El nombre sólo puede contener letras sin espacios.';
+      message = '* El nombre sólo puede contener letras.';
     } else if (data.job.length > 0 && data.job.length <= 2) {
       message = '* La descripción del puesto es demasiado corta.';
     } else if (data.email.length > 0 && !regexEmail.test(data.email)) {
