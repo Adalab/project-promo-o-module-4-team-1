@@ -10,8 +10,6 @@
 
 En este proyecto vamos a desarrollar nuestro primer servidor web.
 
-👉 **[project-promo-o-module4-team1.herokuapp.com](https://project-promo-o-module4-team1.herokuapp.com)**
-
 ## Objetivos
 
 - Consolidar el aprendizaje de las tecnologías **Node JS** y **Express JS**: escuchar peticiones desde el navegador.
